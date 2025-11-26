@@ -1,7 +1,10 @@
+import { candidateStore } from "./mongo/candidate-store.js";
 import { connectMongo } from "./mongo/connect.js";
 
 export const db = {
   userStore: null,
+  candidateStore: null,
+  donationStore: null,
 };
 
 export function connectDb(dbType) {
