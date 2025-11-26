@@ -1,20 +1,21 @@
 import { CandidateMongoose } from "./candidate.js";
+import { Candidate } from "../../types/donation-types.js";
 
 export const candidateStore = {
-  async find() {
+  async find(): Promise<Candidate[]> {
     const candidates = await CandidateMongoose.find().lean();
     return candidates;
   },
-  async findOne(id) {
+  async findOne(id: string): Promise<Candidate | null> {
     const candidate = await CandidateMongoose.findOne({ _id: id }).lean();
     return candidate;
   },
 
-  async findBy(lastName, firstName) {
+  async findBy(lastName: string, firstName: string): Promise<Candidate | null> {
     const candidate = await CandidateMongoose.findOne({
       lastName,
       firstName,
-    });
+    }).lean();
     return candidate;
   },
 };
