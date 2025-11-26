@@ -1,24 +1,31 @@
 {
-  "name": "donation-hapi",
-  "version": "0.1.0",
-  "description": "",
+  "name": "donation-hapi-03-ts",
+  "version": "0.3.0",
+  "description": "First Typescript version of Donation",
   "license": "ISC",
   "author": "",
   "type": "module",
-  "main": "src/server.js",
+  "main": "dist/server.js",
   "scripts": {
-    "start": "node src/server.js",
-    "dev": "nodemon src/server.js --ignore 'src/models/json/*.json'",
+    "build": "tsc -p tsconfig.json && mkdir -p dist/views dist/public && cp -R src/views/* dist/views/ && cp -R public/* dist/public/",
+    "start": "npm run build && node dist/server.js",
+    "dev": "tsx watch src/server.ts",
     "lint": "eslint . --ext .js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "devDependencies": {
+    "@types/hapi__cookie": "^12.0.5",
+    "@types/node": "^24.10.0",
+    "@typescript-eslint/eslint-plugin": "^8.46.2",
+    "@typescript-eslint/parser": "^8.46.2",
     "eslint": "^8.57.1",
     "eslint-config-airbnb-base": "^15.0.0",
     "eslint-config-prettier": "^10.1.8",
     "eslint-plugin-import": "^2.32.0",
     "nodemon": "^3.1.11",
-    "prettier": "^3.6.2"
+    "prettier": "^3.6.2",
+    "tsx": "^4.20.6",
+    "typescript": "^5.9.3"
   },
   "dependencies": {
     "@hapi/boom": "^10.0.1",
@@ -31,5 +38,4 @@
     "mais-mongoose-seeder": "^1.0.7",
     "mongoose": "^9.0.0"
   }
-
 }
